@@ -31,9 +31,10 @@ const questions = [
         message: 'Were there any other collaborators for your project?',
     },
     {
-        type: 'input',
+        type: 'checkbox',
         name: 'license',
-        message: 'What license did you use for your project?',
+        choices: ['NONE','GNU AGPLv3', 'Mozilla Public License 2.0', 
+        'Apache License 2.0', 'MIT', 'Boost Software License 1.0', 'Unilicensed'],
     },
     {
         type: 'input',
@@ -58,7 +59,10 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) { 
+        fs.writeFile(fileName, generateMarkdown(data) , err =>
+    err ? console.log(err) : console.log('READMEFILE has be successfully generated'))
+};
 
 // TODO: Create a function to initialize app
 function init() {}
